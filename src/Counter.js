@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 export default function Counter() {
   const [step, setStep] = useState(1);
-  const [count, setCount] = useState(step);
+  const [count, setCount] = useState(0);
 
   const date = new Date();
   date.setDate(date.getDate() + count);
