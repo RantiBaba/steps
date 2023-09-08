@@ -1,4 +1,5 @@
 import { useState } from 'react';
+// import Counter from './Counter';
 
 const messages = [
   'Learn React ⚛️',
@@ -7,6 +8,11 @@ const messages = [
 ];
 
 export default function App() {
+   return ( <Steps />)
+  // return <Counter />;
+}
+
+function Steps() {
   const [step, setStep] = useState(1);
   const [isOpen, setIsOpen] = useState(true);
 
