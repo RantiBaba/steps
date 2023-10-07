@@ -8,7 +8,7 @@ const messages = [
 ];
 
 export default function App() {
-  return <Steps />;
+   return  <Steps />
   // return <Counter />;
 }
 
@@ -36,46 +36,30 @@ function Steps() {
       {isOpen && (
         <div className='steps' data-testid='steps'>
           <div className='numbers' data-testid='numbers'>
-            <div className={step === 1 ? 'active' : ''}>1</div>
-            <div className={step === 2 ? 'active' : ''}>2</div>
+            <div className={step >= 1 ? 'active' : ''}>1</div>
+            <div className={step >= 2 ? 'active' : ''}>2</div>
             <div className={step === 3 ? 'active' : ''}>3</div>
           </div>
 
-          <StepMessage step={step} testId='message-step'>
-            <span data-testid='message'>{messages[step - 1]}</span>
-          </StepMessage>
+          <p className='message' data-testid='message'>
+            <span data-testid='step'>Step {step}:</span>
+            <span data-testid='message-step'>{messages[step - 1]}</span>
+          </p>
 
           <div className='buttons'>
-            <Button
+            <button
               className='button'
               onClick={handlePrevious}
-              testId='previous-button'
+              data-testid='previous-button'
             >
-              <span data-testid='emoji-left'>👈🏿</span> Previous
-            </Button>
-            <Button
-              className='button'
-              onClick={handleNext}
-              testId='next-button'
-            >
-              Next <span data-testid='emoji-right'>👉🏿</span>
-            </Button>
+              Previous
+            </button>
+            <button className='button' onClick={handleNext} data-testid='next-button'>
+              Next
+            </button>
           </div>
         </div>
       )}
     </>
   );
 }
-
-const StepMessage = ({ step, testId, children }) => (
-  <div className='message'>
-    <h3 data-testid={testId}>Step {step}:</h3>
-    {children}
-  </div>
-);
-
-const Button = ({ className, onClick, testId, children }) => (
-  <button className={className} onClick={onClick} data-testid={testId}>
-    {children}
-  </button>
-);
